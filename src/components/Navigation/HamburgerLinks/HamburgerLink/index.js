@@ -7,7 +7,7 @@ import {
 } from './styles'
 
 
-const HamburgerLink = ({ data }) => {
+const HamburgerLink = ({ name, routeList }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -23,22 +23,22 @@ const HamburgerLink = ({ data }) => {
 
     return (
         <>
-            {/* <DropDownHeader onClick={toggling}>
-                {data.title}
+            <DropDownHeader onClick={toggling}>
+                {name}
             </DropDownHeader>
             {
                 isOpen && (
                     <DropDownListContainer>
                         <DropDownList>
-                            {data.sublinks.map(option => (
-                                <ListItem onClick={onOptionClicked(option)} to={option} key={Math.random()}>
-                                    {option}
+                            {routeList.map(option => (
+                                <ListItem onClick={onOptionClicked(option)} to={option.to} key={Math.random()}>
+                                    {option.name}
                                 </ListItem>
                             ))}
                         </DropDownList>
                     </DropDownListContainer>
                 )
-            } */}
+            }
         </>
     );
 }

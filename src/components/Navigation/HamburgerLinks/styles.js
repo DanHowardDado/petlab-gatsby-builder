@@ -7,10 +7,10 @@ export const Main = styled("div")`
 `;
 
 export const DropDownContainer = styled.div`
-  width: 12.5em;
+  width: 19.5em;
   margin: 0 auto;
   box-shadow: 0px 0px 1px #437794;
-  padding: 80px;
+  padding: 50px;
 
   @media (min-width: 1024px){
       display: none;

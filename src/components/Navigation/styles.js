@@ -82,10 +82,10 @@ export const Navbox = styled.div`
     position: fixed;
     width: 100%;
     justify-content: flex-start;
-    padding-top: 10vh;
+    padding-top: 1vh;
     background-color: #fff;
     transition: all;
-    top: 8vh;
+    top: 10vh;
     left: ${props => (props.open ? "-100%" : "0")};
   }
 `

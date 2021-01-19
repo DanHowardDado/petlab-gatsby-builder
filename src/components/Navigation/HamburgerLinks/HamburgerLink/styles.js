@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 export const DropDownHeader = styled.div`
   margin-bottom: 0.8em;
-  padding: 10px;
+  padding: 15px;
   font-weight: 500;
   font-size: 16px;
   color: #213F4E;

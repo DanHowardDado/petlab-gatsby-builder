@@ -38,20 +38,13 @@ const NavbarLinks = (props) => {
 
   return (
     <>
-      <DropdownItem key="productList" name={'Products'} routeList={productList}>
-      </DropdownItem>
-      <DropdownItem key="categoryList" name={'Shop By Category'} routeList={categoryList}>
-      </DropdownItem>
-      <DropdownItem key="petList" name={'Shop By Pet'} routeList={petList}>
-      </DropdownItem>
-      <DropdownItem key="aboutUsList" name={'About Us'} routeList={aboutUsList}>
-      </DropdownItem>
-      <DropdownItem key="blogList" name={'Our Blog'} routeList={blogList}>
-      </DropdownItem>
-      <DropdownItem key="accountList" name={'Account'} routeList={accountList}>
-      </DropdownItem>
-      <DropdownItem key="helpList" name={'Help'} routeList={helpList}>
-      </DropdownItem>
+      <DropdownItem key="productList" name={'Products'} routeList={productList}></DropdownItem>
+      <DropdownItem key="categoryList" name={'Shop By Category'} routeList={categoryList}></DropdownItem>
+      <DropdownItem key="petList" name={'Shop By Pet'} routeList={petList}></DropdownItem>
+      <DropdownItem key="aboutUsList" name={'About Us'} routeList={aboutUsList}></DropdownItem>
+      <DropdownItem key="blogList" name={'Our Blog'} routeList={blogList}></DropdownItem>
+      <DropdownItem key="accountList" name={'Account'} routeList={accountList}></DropdownItem>
+      <DropdownItem key="helpList" name={'Help'} routeList={helpList}></DropdownItem>
       {/* <NavItem to="/shopify/cart">
         <CartCounter>1</CartCounter>
         <CartIconWrap>

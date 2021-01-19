@@ -8,48 +8,25 @@ import HamburgerLink from './HamburgerLink'
 
 const HamburgerLinks = () => {
 
-    // const data = useStaticQuery(graphql`
-    //     query NavLinks {
-    //         allContentfulNavbarLinks {
-    //             edges {
-    //                 node {
-    //                     id
-    //                     order
-    //                     linkTitle
-    //                     sublinks
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     `
-    // );
-
-    // const links = data.allContentfulNavbarLinks.edges.map(link => ({
-    //     title: link?.node?.linkTitle,
-    //     sublinks: link?.node?.sublinks,
-    //     order: link?.node?.order,
-    // }));
-
-    //ensure links to display in increasing order along navbar
-    // links.sort((a, b) => (a.order > b.order) ? 1 : -1)
+    const productList = [{ 'to': '/product/all', 'name': 'View All' }];
+    const categoryList = [{ 'to': '/collection/Dental', 'name': 'Dental' }, { 'to': '/collection/Joint%20Care', 'name': "Joint Care" }];
+    const petList = [{ 'to': '/pet/dog', 'name': 'Dog' }, { 'to': '/pet/cat', 'name': 'Cat' }];
+    const aboutUsList = [{ 'to': '/story', 'name': 'Our Story' }, { 'to': '/testimonials', 'name': 'Our Testimonials' }];
+    const blogList = [{ 'to': '/blogs', 'name': 'Blogs and Guides' }, { 'to': '/authors', 'name': 'Meet The Authors' }];
+    const accountList = [{ 'to': '/user/account', 'name': 'My Account' }, { 'to': '/user/orders', 'name': 'Orders And Returns' }, { 'to': '/user/pets', 'name': 'My Pets' }, { 'to': '/user/subscriptions', 'name': 'My Subscriptions' }];
+    const helpList = [{ 'to': '/help/subscription', 'name': 'My Subscriptions' }, { 'to': '/help/orders', 'name': 'Help Centre' }];
 
     return (
         <Main>
-            {/* <DropDownContainer>
-                {links ? (
-                    links.map((link, i) => (
-                        < HamburgerLink key={i} data={
-                            {
-                                title: link?.title,
-                                sublinks: link?.sublinks,
-                            }
-                        }></HamburgerLink>
-                    )
-                    )
-                ) : (
-                        <p>No Products found!</p>
-                    )}
-            </DropDownContainer> */}
+            <DropDownContainer>
+                < HamburgerLink key="productList" name={'Products'} routeList={productList}></HamburgerLink>
+                < HamburgerLink key="categoryList" name={'Shop By Category'} routeList={categoryList}></HamburgerLink>
+                < HamburgerLink key="petList" name={'Shop By Pet'} routeList={petList}></HamburgerLink>
+                < HamburgerLink key="aboutUsList" name={'About Us'} routeList={aboutUsList}></HamburgerLink>
+                < HamburgerLink key="blogList" name={'Our Blog'} routeList={blogList}></HamburgerLink>
+                < HamburgerLink key="accountList" name={'Account'} routeList={accountList}></HamburgerLink>
+                < HamburgerLink key="helpList" name={'Help'} routeList={helpList}></HamburgerLink>
+            </DropDownContainer>
         </Main>
     );
 }
