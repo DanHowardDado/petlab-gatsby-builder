@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import NavbarLinks from "./NavbarLinks"
 import HamburgerLinks from "./HamburgerLinks"
-import Logo from "./Logo/index"
 import { Navbar, Toggle, Navbox, Hamburger } from './styles'
 import useWindowSize from "./useWindowSize";
 
@@ -11,7 +10,6 @@ export const Navigation = ({Navlinks}) => {
 
   return (
     <Navbar>
-      <Logo />
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

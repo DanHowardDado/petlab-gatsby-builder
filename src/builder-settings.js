@@ -8,5 +8,6 @@ import '@builder.io/widgets';
 import './components/Hero/Hero.builder';
 import './components/Navigation/Navigation.builder';
 import './components/CardItem/CardItem.builder';
+import './components/ProductPage/ProductPage.builder';
 import config from './config';
 builder.init(config.builderAPIKey);

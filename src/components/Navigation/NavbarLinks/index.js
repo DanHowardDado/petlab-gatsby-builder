@@ -5,7 +5,6 @@ import {
   CartIconWrap,
 } from './styles'
 import Img from "gatsby-image"
-import { useStaticQuery, graphql } from "gatsby"
 import DropdownItem from "./dropdownItem/index";
 
 
