@@ -62,6 +62,7 @@ export const ListItem = styled(Link)`
   text-decoration: none;
   margin-bottom: 0.8em;
   color: #437794;
+  cursor: pointer;
 
   :after {
     position: absolute;

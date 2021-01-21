@@ -30,9 +30,9 @@ const HamburgerLink = ({ name, routeList }) => {
                 isOpen && (
                     <DropDownListContainer>
                         <DropDownList>
-                            {routeList.map(option => (
-                                <ListItem onClick={onOptionClicked(option)} to={option.to} key={Math.random()}>
-                                    {option.name}
+                            {routeList.map(listItem => (
+                                <ListItem onClick={onOptionClicked(listItem)} to={listItem.link} key={Math.random()}>
+                                    {listItem.text}
                                 </ListItem>
                             ))}
                         </DropDownList>

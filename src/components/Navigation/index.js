@@ -5,7 +5,7 @@ import Logo from "./Logo/index"
 import { Navbar, Toggle, Navbox, Hamburger } from './styles'
 import useWindowSize from "./useWindowSize";
 
-export const Navigation = () => {
+export const Navigation = ({Navlinks}) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
   const windowSize = useWindowSize();
 
@@ -20,11 +20,11 @@ export const Navigation = () => {
       </Toggle>
       {(windowSize === 'md' || windowSize === 'sm') && navbarOpen ? (
         <Navbox >
-          <HamburgerLinks />
+          <HamburgerLinks navlinks={Navlinks} />
         </Navbox>
       ) : (
           <Navbox open>
-            <NavbarLinks hamburger={navbarOpen} />
+            <NavbarLinks navlinks={Navlinks}/>
           </Navbox>
         )}
     </Navbar>

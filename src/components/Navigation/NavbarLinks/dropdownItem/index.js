@@ -25,8 +25,8 @@ const DropdownItem = ({ name, routeList }) => {
                 <Menu onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)} ref={dropdownRef} className={`${isActive ? "active" : "inactive"}`}>
                     {routeList.map(listItem =>
                         <List>
-                            <ListItem to={listItem.to}>
-                                {listItem.name}
+                            <ListItem to={listItem.link}>
+                                {listItem.text}
                             </ListItem>
                         </List>
                     )}

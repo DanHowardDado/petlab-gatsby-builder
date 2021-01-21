@@ -67,6 +67,7 @@ export const ListItem = styled(Link)`
     display: inline-block;
     position: relative;
     font-family: sans-serif;
+    cursor: pointer;
 
     :after {
         position: absolute;
