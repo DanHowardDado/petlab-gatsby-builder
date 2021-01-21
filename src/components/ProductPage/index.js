@@ -13,64 +13,25 @@ export const ProductPage = props => {
     subscribeProducts
   } = props;
 
-  console.log(props);
-
-  //Get list of contentful products 
- // const contentfulSubscriptionProducts = pageContext.product.productSelector.subscriptionProducts
- //const contentfulOTPProducts = pageContext.product.productSelector.otpProducts
-  //Get packaging type for dropdown 
-  //const packaging = pageContext.product.productSelector.packaging
-  //get subscription discount from either override field in contentful or constant from node file
-  // const subscriptionDiscount = pageContext.product.productSelector.newDiscount > 0 ? 1 - (pageContext.product.productSelector.newDiscount / 100) : 1 - (pageContext.Discount / 100)
-  // get relative shopify products from below query
- // const shopifySubscriptionProducts = data.subscriptionProducts.edges;
-  // shopifyOTPProducts = data.otpProducts.edges;
-
-  //Update shopify products with contentful variant identifier 
-  //This allows products in contentful to be used as variants and be identifiable in the dropdown
-  // const updateShopifyProducts = () => {
-  //   shopifySubscriptionProducts.map(function ({ node }) {
-  //     var result = contentfulSubscriptionProducts.filter(contentful => contentful.variantId === node.variants[0].shopifyId);
-  //     if (result.length > 0) {
-  //       node.variant = result[0].variant;
-  //     }
-  //     return node
-  //   })
-
-  //   shopifyOTPProducts.map(function ({ node }) {
-  //     var result = contentfulOTPProducts.filter(contentful => contentful.variantId === node.variants[0].shopifyId);
-  //     if (result.length > 0) {
-  //       node.variant = result[0].variant;
-  //     }
-  //     return node
-  //   })
-
-  // };
-  // updateShopifyProducts();
-
   const subscriptionDiscount = 25;
   // pageContext.product.productSelector.newDiscount > 0 ? 1 - (pageContext.product.productSelector.newDiscount / 100) : 1 - (pageContext.Discount / 100)
 
   //create list of product objects for product selector
-  const otpQuantityOptions = otpProducts.map(product => ({
+  const otpQuantityOptions = otpProducts[0].variants.map(product => ({
       variantId: '',
       value: product.value,
       label: product.label,
     })
   );
-  const subscribeQuantityOptions = subscribeProducts.map(product => ({
+  const subscribeQuantityOptions = subscribeProducts[0].variants.map(product => ({
       variantId: '',
       value: product.value,
       label: product.label,
     })
   );
-
-  //sort product variants to display in increasing order in dropdown
-  // otpQuantityOptions.sort((a, b) => (a.value > b.value) ? 1 : -1)
-  // subscribeQuantityOptions.sort((a, b) => (a.value > b.value) ? 1 : -1)
 
   //states to manage price, discount price and product selectors
-  const [price, setPrice] = useState(subscribeQuantityOptions[0].price)
+  const [price, setPrice] = useState(subscribeQuantityOptions[0].value)
   const [discountedPrice, setDiscountedPrice] = useState(subscriptionDiscount * price)
 
   const [otpBtnClicked, setOtpBtnClicked] = useState(false);
@@ -81,14 +42,14 @@ export const ProductPage = props => {
   // update the price of OTP selector
   function OTPPriceUpdate(value) {
     setOTPSelectedOption(value)
-    setPrice(otpQuantityOptions[value.value - 1].price)
+    setPrice(value.price)
   }
 
   //update the price of Subscription selector and discounted price
   function SubscribePriceUpdate(value) {
     setSubscribeSelectedOption(value)
-    setPrice(subscribeQuantityOptions[value.value - 1].price)
-    setDiscountedPrice(subscriptionDiscount * subscribeQuantityOptions[value.value - 1].price)
+    setPrice(value.price)
+    setDiscountedPrice((subscriptionDiscount / 100) * value.price)
   }
 
   // update the price of OTP product
@@ -103,7 +64,7 @@ export const ProductPage = props => {
     setOtpBtnClicked(false);
     setSubscribeSelectedOption(subscribeQuantityOptions[0])
     setPrice(subscribeQuantityOptions[0].price)
-    setDiscountedPrice(subscriptionDiscount * subscribeQuantityOptions[0].price)
+    setDiscountedPrice((subscriptionDiscount / 100) * subscribeQuantityOptions[0].price)
   };
 
   // const AddToCart = async () => {

@@ -24,24 +24,23 @@ export const Title = styled.div`
 `
 
 export const ProductImg = styled.div`
-  display:flex;
+  display: block;
   margin: 16px;
 `
 
 export const ProductSelector = styled.div`
-  display:flex;
+  display: block;
   margin: 16px;
 `
 
 export const Img = styled.img`
-  margin-left: 33%;
   padding: 0;
   max-width: 350px;
   max-height: 350px;
 `
 
 export const PricingSection = styled.div`
-  display:flex;
+  display: block;
   margin: 16px;
 `
 
