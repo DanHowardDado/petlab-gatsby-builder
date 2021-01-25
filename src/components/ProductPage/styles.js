@@ -2,6 +2,10 @@ import styled from '@emotion/styled'
 import Image from 'gatsby-image'
 import Select from 'react-select'
 
+export const Container = styled.div`
+  margin: 0;
+`
+
 export const Title = styled.div`
   border-bottom: 1px solid #000;
   padding-bottom: 10px;

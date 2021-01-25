@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import { Container, TwoColumnGrid } from '../../utils/styles'
+import {TwoColumnGrid } from '../../utils/styles'
 import * as S from './styles'
 import Navigation from '../../components/Navigation'
 
@@ -12,60 +12,75 @@ export const ProductPage = props => {
     otpProducts,
     subscribeProducts
   } = props;
-
+  console.log(otpProducts, subscribeProducts, 'odhfjid');
   const subscriptionDiscount = 25;
   // pageContext.product.productSelector.newDiscount > 0 ? 1 - (pageContext.product.productSelector.newDiscount / 100) : 1 - (pageContext.Discount / 100)
 
   //create list of product objects for product selector
   const otpQuantityOptions = otpProducts[0].variants.map(product => ({
       variantId: '',
-      value: product.value,
       label: product.label,
+      value: product.value,
+      discount_price: product.discount_price,
     })
   );
   const subscribeQuantityOptions = subscribeProducts[0].variants.map(product => ({
       variantId: '',
-      value: product.value,
       label: product.label,
+      value: product.value,
+      discount_price: product.discount_price,
     })
   );
 
   //states to manage price, discount price and product selectors
   const [price, setPrice] = useState(subscribeQuantityOptions[0].value)
-  const [discountedPrice, setDiscountedPrice] = useState(subscriptionDiscount * price)
-
+  const [discountedPrice, setDiscountedPrice] = useState(subscribeQuantityOptions[0].discount_price > 0 ? subscribeQuantityOptions[0].discount_price : subscribeQuantityOptions[0].value)
+    console.log(price, discountedPrice, 'initial');
   const [otpBtnClicked, setOtpBtnClicked] = useState(false);
 
   const [otpSelectedOption, setOTPSelectedOption] = useState(otpQuantityOptions[0]);
   const [subscribeSelectedOption, setSubscribeSelectedOption] = useState(subscribeQuantityOptions[0]);
 
-  // update the price of OTP selector
-  function OTPPriceUpdate(value) {
-    setOTPSelectedOption(value)
-    setPrice(value.price)
-  }
-
-  //update the price of Subscription selector and discounted price
-  function SubscribePriceUpdate(value) {
-    setSubscribeSelectedOption(value)
-    setPrice(value.price)
-    setDiscountedPrice((subscriptionDiscount / 100) * value.price)
-  }
-
   // update the price of OTP product
   const handleOTPBtnClick = () => {
     setOtpBtnClicked(true);
+    console.log(otpQuantityOptions, 'handleOTPBtnClick');
     setOTPSelectedOption(otpQuantityOptions[0])
-    setPrice(otpQuantityOptions[0].price)
+    setPrice(otpQuantityOptions[0].value)
+    setDiscountedPrice(otpQuantityOptions[0].discount_price > 0 ? otpQuantityOptions[0].discount_price : otpQuantityOptions[0].value)
   };
 
   //update the price of subscription product as well as discounted price
   const handleSubscriptionBtnClick = () => {
+    console.log(subscribeQuantityOptions, 'handleSubscriptionBtnClick');
+
     setOtpBtnClicked(false);
     setSubscribeSelectedOption(subscribeQuantityOptions[0])
-    setPrice(subscribeQuantityOptions[0].price)
-    setDiscountedPrice((subscriptionDiscount / 100) * subscribeQuantityOptions[0].price)
+    setPrice(subscribeQuantityOptions[0].value)
+    setDiscountedPrice(subscribeQuantityOptions[0].discount_price > 0 ? subscribeQuantityOptions[0].discount_price : subscribeQuantityOptions[0].value)
+
   };
+  
+  // update the price of OTP selector
+  function OTPPriceUpdate(value) {
+    console.log(value, 'OTPPriceUpdate');
+
+    setOTPSelectedOption(value)
+    setPrice(value.value)
+    setDiscountedPrice(value.discount_price > 0 ? value.discount_price : value.value)
+  }
+
+  //update the price of Subscription selector and discounted price
+  function SubscribePriceUpdate(value) {
+
+    console.log(value, 'SubscribePriceUpdate');
+
+    setSubscribeSelectedOption(value)
+    setPrice(value.value)
+    setDiscountedPrice(value.discount_price > 0 ? value.discount_price : value.value)
+  }
+
+  
 
   // const AddToCart = async () => {
 
@@ -103,7 +118,7 @@ export const ProductPage = props => {
     }).format(parseFloat(price ? price : 0))
 
   return (
-    <Container>
+    <S.Container>
       <S.Title>
         {title}
       </S.Title>
@@ -133,7 +148,7 @@ export const ProductPage = props => {
                     <S.PriceTag>
                       {getPrice(discountedPrice)}
                       <S.YouSave>
-                        You Save: {getPrice(price - discountedPrice)} ({(1 - subscriptionDiscount) * 100}%)
+                        You Save: {getPrice(price - discountedPrice)} ({Math.round(100 * Math.abs( ((discountedPrice - price) / price)))}%)
                     </S.YouSave>
                     </S.PriceTag>
                   </S.FlexDiv>
@@ -183,7 +198,7 @@ export const ProductPage = props => {
           </S.FlexDiv>
         </S.ProductSelector>
       </TwoColumnGrid>
-    </Container>
+    </S.Container>
   )
 }
 
