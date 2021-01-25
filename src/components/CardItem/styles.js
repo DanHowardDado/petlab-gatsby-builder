@@ -31,7 +31,7 @@ export const Product = styled.div`
 `
 
 export const Title = styled.span`
-  font-size: 21px;
+  font-size: 1vw;
   line-height: 31px;
   font-weight: 600;
   letter-spacing: 0px;
