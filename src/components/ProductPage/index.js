@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import { graphql } from 'gatsby'
 import {TwoColumnGrid } from '../../utils/styles'
 import * as S from './styles'
-import Navigation from '../../components/Navigation'
 
 export const ProductPage = props => {
 
@@ -13,7 +11,6 @@ export const ProductPage = props => {
     subscribeProducts
   } = props;
   console.log(otpProducts, subscribeProducts, 'odhfjid');
-  const subscriptionDiscount = 25;
   // pageContext.product.productSelector.newDiscount > 0 ? 1 - (pageContext.product.productSelector.newDiscount / 100) : 1 - (pageContext.Discount / 100)
 
   //create list of product objects for product selector

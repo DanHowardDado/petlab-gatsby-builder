@@ -25,7 +25,7 @@ const DropdownItem = ({ name, routeList }) => {
                 <Menu onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)} ref={dropdownRef} className={`${isActive ? "active" : "inactive"}`}>
                     {routeList.map(listItem =>
                         <List>
-                            <ListItem to={listItem.link}>
+                            <ListItem key={Math.random()} to={listItem.link}>
                                 {listItem.text}
                             </ListItem>
                         </List>

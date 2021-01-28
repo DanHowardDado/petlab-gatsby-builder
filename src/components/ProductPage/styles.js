@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import Image from 'gatsby-image'
 import Select from 'react-select'
 
 export const Container = styled.div`
